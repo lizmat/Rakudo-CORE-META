@@ -1,0 +1,25 @@
+{
+  "auth": "cpan:ELIZABETH",
+  "authors": [
+    "Elizabeth Mattijsen"
+  ],
+  "build-depends": [
+  ],
+  "depends": [
+  ],
+  "description": "provide zef compatible meta-data for Rakudo",
+  "license": "Artistic-2.0",
+  "name": "Rakudo::CORE::META",
+  "perl": "6.d",
+  "provides": {
+    "Rakudo::CORE::META": "lib/Rakudo/CORE/META.rakumod"
+  },
+  "resources": [
+  ],
+  "source-url": "",
+  "tags": [
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.1"
+}
