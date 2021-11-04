@@ -2,6 +2,9 @@ Revision history for Rakudo-CORE-META
 
 {{$NEXT}}
 
+0.0.3  2021-11-04T12:23:59+01:00
+    - Now really change the auth to zef:lizmat
+
 0.0.2  2021-11-04T12:05:20+01:00
     - Argh, forgot to change auth to zef:lizmat
 

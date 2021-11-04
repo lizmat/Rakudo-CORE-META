@@ -1,5 +1,5 @@
 my  # to appease mi6
-class Rakudo::CORE::META:ver<0.0.2>:auth<auth:lizmat> { }
+class Rakudo::CORE::META:ver<0.0.3>:auth<zef:lizmat> { }
 
 # sample layout in repository
 #${
