@@ -40,7 +40,7 @@ my class Rakudo::CORE {
 
 =head1 NAME
 
-Rakudo::CORE::META - provide zef compatible meta-data for Rakudo
+Rakudo::CORE::META - Provide zef compatible meta-data for Rakudo
 
 =head1 SYNOPSIS
 

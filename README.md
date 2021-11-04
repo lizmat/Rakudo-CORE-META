@@ -1,7 +1,9 @@
+[![Actions Status](https://github.com/lizmat/Rakudo-CORE-META/workflows/test/badge.svg)](https://github.com/lizmat/Rakudo-CORE-META/actions)
+
 NAME
 ====
 
-Rakudo::CORE::META - provide zef compatible meta-data for Rakudo
+Rakudo::CORE::META - Provide zef compatible meta-data for Rakudo
 
 SYNOPSIS
 ========
