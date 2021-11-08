@@ -2,6 +2,9 @@ Revision history for Rakudo-CORE-META
 
 {{$NEXT}}
 
+0.0.4  2021-11-08T14:38:25+01:00
+    - Remove the module statement, we don't need it anymore
+
 0.0.3  2021-11-04T12:23:59+01:00
     - Now really change the auth to zef:lizmat
 
