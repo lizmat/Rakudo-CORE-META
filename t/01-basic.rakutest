@@ -1,7 +1,7 @@
 use Test;
 use Rakudo::CORE::META;
 
-plan 7;
+plan 8;
 
 my %meta := %Rakudo::CORE::META;  # reduce typing
 
@@ -11,6 +11,7 @@ ok %meta<dist>,                    'do we have an identity';
 is %meta<license>, "Artistic-2.0", 'is the license ok';
 is %meta<name>,    'CORE',         'is the name ok';
 isa-ok %meta<provides>, Map,       'do we have a map with provided modules';
+isa-ok %meta<source-url>, Str:D,   'do we have a URL for the source';
 is %meta<version>, $*RAKU.version, 'is the version ok';
 
 # vim: expandtab shiftwidth=4

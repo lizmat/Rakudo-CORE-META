@@ -8,6 +8,8 @@
 #      }
 #   }),
 
+my constant $release = "2021.12";
+
 my class Rakudo::CORE {
     our constant %META = do {
         my %meta := CompUnit::RepositoryRegistry
@@ -17,8 +19,7 @@ my class Rakudo::CORE {
         my $name    := %meta<name>;
         my $auth    := %meta<auth>;
         my $version := %meta<ver>.Str;
-        Map.new((
-          auth        => $auth,
+        ( auth        => $auth,
           description =>
             "The Rakudo™ Compiler implementing the Raku® Programming Language",
           dist        => $name ~ ':ver<' ~ $version ~ '>:auth<' ~ $auth ~ '>',
@@ -28,8 +29,9 @@ my class Rakudo::CORE {
           provides    => Map.new((%meta<provides>.map({
               .key => .value.keys.head
           }))),
+          source-url => "https://github.com/rakudo/rakudo/releases/download/$release/rakudo-$release.tar.gz",
           version  => $version,
-        ))
+        ).Map
     }
 }
 
