@@ -8,17 +8,15 @@
 #      }
 #   }),
 
-my constant $release = "2021.12";
+my constant $release = Compiler.new.version.Str.substr(0,7);
 
 my class Rakudo::CORE {
     our constant %META = do {
-        my %meta := CompUnit::RepositoryRegistry
-          .repository-for-name("core")
-          .installed
-          .map({ .meta<> if .meta<auth> eq "perl" }).head;
-        my $name    := %meta<name>;
-        my $auth    := %meta<auth>;
-        my $version := %meta<ver>.Str;
+        my %meta = .installed.map({ .meta<> if .meta<auth> eq "perl" }).head
+          with CompUnit::RepositoryRegistry.repository-for-name("core");
+        my $name    := %meta<name> // "CORE";
+        my $auth    := %meta<auth> // "raku";
+        my $version := (%meta<ver> // $*RAKU.version).Str;
         ( auth        => $auth,
           description =>
             "The Rakudo™ Compiler implementing the Raku® Programming Language",
@@ -26,9 +24,9 @@ my class Rakudo::CORE {
           license     => "Artistic-2.0",
           name        => $name,
           perl        => $version,
-          provides    => Map.new((%meta<provides>.map({
+          provides    => Map.new((.map({
               .key => .value.keys.head
-          }))),
+          }) with %meta<provides>)),
           source-url => "https://github.com/rakudo/rakudo/releases/download/$release/rakudo-$release.tar.gz",
           version  => $version,
         ).Map
@@ -62,12 +60,16 @@ time of the module, or after any Rakudo core update.
 
 Elizabeth Mattijsen <liz@raku.rocks>
 
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2021 Elizabeth Mattijsen
-
 Source can be located at: https://github.com/lizmat/Rakudo-CORE-META .
 Comments and Pull Requests are welcome.
+
+If you like this module, or what I’m doing more generally, committing to a
+L<small sponsorship|https://github.com/sponsors/lizmat/>  would mean a great
+deal to me!
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2021, 2022 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 

@@ -2,6 +2,10 @@ Revision history for Rakudo-CORE-META
 
 {{$NEXT}}
 
+0.0.6  2022-05-22T15:06:05+02:00
+    - Make sure module compiles on an uninstalled Rakudo
+    - Add link to sponsoring
+
 0.0.5  2022-02-09T09:55:03+01:00
     - Add "source-url" key for consistency
 
