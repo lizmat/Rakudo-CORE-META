@@ -8,22 +8,26 @@
 #      }
 #   }),
 
-my constant $release = Compiler.new.version.Str.substr(0,7);
+my constant $compiler-version = Compiler.new.version.Str;
+my constant $release = $compiler-version.substr(0,7);
 
 my class Rakudo::CORE {
     our constant %META = do {
-        my %meta = .installed.map({ .meta<> if .meta<auth> eq "perl" }).head
+        my %meta =
+          .installed
+          .map({ .meta<> if .meta<auth> eq "perl" | "Yet Another Society" })
+          .head
           with CompUnit::RepositoryRegistry.repository-for-name("core");
         my $name    := %meta<name> // "CORE";
         my $auth    := %meta<auth> // "raku";
-        my $version := (%meta<ver> // $*RAKU.version).Str;
+        my $version := (%meta<ver> // $compiler-version).Str;
         ( auth        => $auth,
           description =>
             "The Rakudo™ Compiler implementing the Raku® Programming Language",
           dist        => $name ~ ':ver<' ~ $version ~ '>:auth<' ~ $auth ~ '>',
           license     => "Artistic-2.0",
           name        => $name,
-          perl        => $version,
+          perl        => $*RAKU.version,
           provides    => Map.new((.map({
               .key => .value.keys.head
           }) with %meta<provides>)),
