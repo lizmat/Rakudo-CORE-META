@@ -2,6 +2,9 @@ Revision history for Rakudo-CORE-META
 
 {{$NEXT}}
 
+0.0.7  2022-06-02T12:48:33+02:00
+    - Follow changes in core meta and remove a wonky test
+
 0.0.6  2022-05-22T15:06:05+02:00
     - Make sure module compiles on an uninstalled Rakudo
     - Add link to sponsoring
