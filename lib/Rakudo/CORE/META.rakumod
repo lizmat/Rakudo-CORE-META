@@ -8,8 +8,7 @@
 #      }
 #   }),
 
-my constant $compiler-version = Compiler.new.version.Str;
-my constant $release = $compiler-version.substr(0,7);
+my constant $release = Compiler.new.version.Str.substr(0,7);
 
 my class Rakudo::CORE {
     our constant %META = do {
@@ -20,7 +19,7 @@ my class Rakudo::CORE {
           with CompUnit::RepositoryRegistry.repository-for-name("core");
         my $name    := %meta<name> // "CORE";
         my $auth    := %meta<auth> // "raku";
-        my $version := (%meta<ver> // $compiler-version).Str;
+        my $version := (%meta<ver> // $release).Str;
         ( auth        => $auth,
           description =>
             "The Rakudo™ Compiler implementing the Raku® Programming Language",
