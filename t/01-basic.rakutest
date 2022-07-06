@@ -1,13 +1,14 @@
 use Test;
 use Rakudo::CORE::META;
 
-plan 7;
+plan 8;
 
 my %meta := %Rakudo::CORE::META;  # reduce typing
 
 ok %meta<auth>,                    'do we have an authority';
 ok %meta<description>,             'do we have a description';
 ok %meta<dist>,                    'do we have an identity';
+ok %meta<version>.chars == 7,      'do we have a proper version';
 is %meta<license>, "Artistic-2.0", 'is the license ok';
 is %meta<name>, 'CORE' | 'rakudo', 'is the name ok';
 isa-ok %meta<provides>, Map,       'do we have a map with provided modules';

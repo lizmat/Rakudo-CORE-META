@@ -19,7 +19,7 @@ my class Rakudo::CORE {
           with CompUnit::RepositoryRegistry.repository-for-name("core");
         my $name    := %meta<name> // "CORE";
         my $auth    := %meta<auth> // "raku";
-        my $version := (%meta<ver> // $release).Str;
+        my $version := (%meta<ver> // $release).Str.substr(0,7);
         ( auth        => $auth,
           description =>
             "The Rakudo™ Compiler implementing the Raku® Programming Language",

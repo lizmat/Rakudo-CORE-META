@@ -2,6 +2,9 @@ Revision history for Rakudo-CORE-META
 
 {{$NEXT}}
 
+0.0.9  2022-07-06T15:36:00+02:00
+    - Make sure we use a released version also in <version>
+
 0.0.8  2022-06-02T16:57:08+02:00
     - Make sure we use a released version for version
 
