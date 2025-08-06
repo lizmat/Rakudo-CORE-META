@@ -1,3 +1,4 @@
 .precomp/
 /Rakudo-CORE-META-*
 /releases/
+*.rakucov

@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/lizmat/Rakudo-CORE-META/workflows/test/badge.svg)](https://github.com/lizmat/Rakudo-CORE-META/actions)
+[![Actions Status](https://github.com/lizmat/Rakudo-CORE-META/actions/workflows/linux.yml/badge.svg)](https://github.com/lizmat/Rakudo-CORE-META/actions) [![Actions Status](https://github.com/lizmat/Rakudo-CORE-META/actions/workflows/macos.yml/badge.svg)](https://github.com/lizmat/Rakudo-CORE-META/actions) [![Actions Status](https://github.com/lizmat/Rakudo-CORE-META/actions/workflows/windows.yml/badge.svg)](https://github.com/lizmat/Rakudo-CORE-META/actions)
 
 NAME
 ====
@@ -12,6 +12,9 @@ SYNOPSIS
 use Rakudo::CORE::META;
 say "Rakudo core provides these additional modules:";
 .say for %Rakudo::CORE::META<provides>.keys.sort(*.fc);
+
+# META6-like representation
+say to-json %RAKUDO::CORE::META, :pretty, :sorted-keys;
 ```
 
 DESCRIPTION
@@ -31,7 +34,7 @@ If you like this module, or what I’m doing more generally, committing to a [sm
 COPYRIGHT AND LICENSE
 =====================
 
-Copyright 2021, 2022 Elizabeth Mattijsen
+Copyright 2021, 2022, 2025 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 

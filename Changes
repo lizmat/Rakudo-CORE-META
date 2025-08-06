@@ -1,6 +1,11 @@
 Revision history for Rakudo-CORE-META
 
 {{$NEXT}}
+    - Modernize META and doc
+    - Add CI badge for each OS
+    - Modernize %Rakudo::CORE::META
+    - Add coverage testing (now at 100%)
+    - Update copyright year
 
 0.0.9  2022-07-06T15:36:00+02:00
     - Make sure we use a released version also in <version>

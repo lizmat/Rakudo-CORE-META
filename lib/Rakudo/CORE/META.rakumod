@@ -8,74 +8,36 @@
 #      }
 #   }),
 
-my constant $release = Compiler.new.version.Str.substr(0,7);
+unit package Rakudo::CORE:ver<0.0.10>:auth<zef:lizmat>;
+BEGIN {
+    use nqp;
+    my $repo    := "https://github.com/rakudo/rakudo";
+    my $version :=  nqp::gethllsym("default","SysConfig").rakudo-build-config<version>;
+    my $sha     := .contains("g") ?? .split("g").tail !! $_ with $version;
 
-my class Rakudo::CORE {
-    our constant %META = do {
-        my %meta =
-          .installed
-          .map({ .meta<> if .meta<auth> eq "perl" | "Yet Another Society" })
-          .head
-          with CompUnit::RepositoryRegistry.repository-for-name("core");
-        my $name    := %meta<name> // "CORE";
-        my $auth    := %meta<auth> // "raku";
-        my $version := (%meta<ver> // $release).Str.substr(0,7);
-        ( auth        => $auth,
-          description =>
-            "The Rakudo™ Compiler implementing the Raku® Programming Language",
-          dist        => $name ~ ':ver<' ~ $version ~ '>:auth<' ~ $auth ~ '>',
-          license     => "Artistic-2.0",
-          name        => $name,
-          perl        => $*RAKU.version,
-          provides    => Map.new((.map({
-              .key => .value.keys.head
-          }) with %meta<provides>)),
-          source-url => "https://github.com/rakudo/rakudo/releases/download/$release/rakudo-$release.tar.gz",
-          version  => $version,
-        ).Map
-    }
+    my %meta =
+      .installed
+      .map({ .meta<> if .meta<auth> eq "perl" | "Yet Another Society" })  # UNCOVERABLE
+      .head
+      with CompUnit::RepositoryRegistry.repository-for-name("core");
+
+    our %META = 
+      auth        => %meta<auth>,
+      authors     => ("Rakudo Core Developers",),  # UNCOVERABLE
+      description =>
+        "The Rakudo™ Compiler implementing the Raku® Programming Language",
+      license     => "Artistic-2.0",
+      name        => %meta<name>,
+      raku        => $*RAKU.version.Str,
+      provides    => (.map({.key => .value.keys.head}).Map  # UNCOVERABLE
+                       with %meta<provides>),
+      support => (  # UNCOVERABLE
+        bugtracker => "$repo/issues",
+        email      => "security@raku.org",
+        source     => "$repo/archive/$sha.zip"
+      ).Map,
+      version  => $version,
+    ;
 }
-
-=begin pod
-
-=head1 NAME
-
-Rakudo::CORE::META - Provide zef compatible meta-data for Rakudo
-
-=head1 SYNOPSIS
-
-=begin code :lang<raku>
-
-use Rakudo::CORE::META;
-say "Rakudo core provides these additional modules:";
-.say for %Rakudo::CORE::META<provides>.keys.sort(*.fc);
-
-=end code
-
-=head1 DESCRIPTION
-
-Rakudo::CORE::META provides zef compatible meta-data of the modules that
-are provided by the Rakudo core, by exporting C<%Rakudo::CORE::META> hash.
-This hash contains information that could be introspected at installation
-time of the module, or after any Rakudo core update.
-
-=head1 AUTHOR
-
-Elizabeth Mattijsen <liz@raku.rocks>
-
-Source can be located at: https://github.com/lizmat/Rakudo-CORE-META .
-Comments and Pull Requests are welcome.
-
-If you like this module, or what I’m doing more generally, committing to a
-L<small sponsorship|https://github.com/sponsors/lizmat/>  would mean a great
-deal to me!
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2021, 2022 Elizabeth Mattijsen
-
-This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
-
-=end pod
 
 # vim: expandtab shiftwidth=4
