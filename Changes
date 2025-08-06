@@ -1,6 +1,8 @@
 Revision history for Rakudo-CORE-META
 
 {{$NEXT}}
+
+0.0.10  2025-08-06T22:10:31+02:00
     - Modernize META and doc
     - Add CI badge for each OS
     - Modernize %Rakudo::CORE::META
