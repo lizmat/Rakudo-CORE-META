@@ -2,6 +2,9 @@ Revision history for Rakudo-CORE-META
 
 {{$NEXT}}
 
+0.0.11  2025-08-07T13:25:43+02:00
+    - Add "irc" field to "support" hash
+
 0.0.10  2025-08-06T22:10:31+02:00
     - Modernize META and doc
     - Add CI badge for each OS

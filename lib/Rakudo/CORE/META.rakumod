@@ -8,7 +8,7 @@
 #      }
 #   }),
 
-unit package Rakudo::CORE:ver<0.0.10>:auth<zef:lizmat>;
+unit package Rakudo::CORE:ver<0.0.11>:auth<zef:lizmat>;
 BEGIN {
     use nqp;
     my $repo    := "https://github.com/rakudo/rakudo";
@@ -21,23 +21,24 @@ BEGIN {
       .head
       with CompUnit::RepositoryRegistry.repository-for-name("core");
 
-    our %META = 
+    our %META = (
       auth        => %meta<auth>,
       authors     => ("Rakudo Core Developers",),  # UNCOVERABLE
       description =>
         "The Rakudo™ Compiler implementing the Raku® Programming Language",
       license     => "Artistic-2.0",
-      name        => %meta<name>,
+      name        => "Rakudo",
       raku        => $*RAKU.version.Str,
       provides    => (.map({.key => .value.keys.head}).Map  # UNCOVERABLE
                        with %meta<provides>),
       support => (  # UNCOVERABLE
         bugtracker => "$repo/issues",
         email      => "security@raku.org",
-        source     => "$repo/archive/$sha.zip"
+        source     => "$repo/archive/$sha.zip",
+        irc        => "irc://libera.chat/raku",
       ).Map,
       version  => $version,
-    ;
+    ).Map;
 }
 
 # vim: expandtab shiftwidth=4
