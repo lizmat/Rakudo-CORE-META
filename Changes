@@ -2,6 +2,9 @@ Revision history for Rakudo-CORE-META
 
 {{$NEXT}}
 
+0.0.12  2025-08-08T19:30:09+02:00
+    - Re-instate the "dist" field, the REA harvester needs it
+
 0.0.11  2025-08-07T13:25:43+02:00
     - Add "irc" field to "support" hash
 

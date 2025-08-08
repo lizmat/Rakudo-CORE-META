@@ -38,6 +38,10 @@ BEGIN {
         irc        => "irc://libera.chat/raku",
       ).Map,
       version  => $version,
+
+      # This MUST BE present for the REA harvester to handle installed
+      # Rakudo modules correctly
+      dist => "Rakudo:ver<$version>:auth<%meta<auth>>",
     ).Map;
 }
 
